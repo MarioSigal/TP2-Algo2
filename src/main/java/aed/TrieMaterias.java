@@ -4,7 +4,9 @@ import java.util.List;
 
 import aed.TrieCarreras.Nodo;
 import aed.interfaces.Materias;
-
+import aed.interfaces.otrosNombres;
+import aed.interfaces.ListaEnlazada;
+@SuppressWarnings("unused")
 public class TrieMaterias implements Materias{
     //Atributos
     private Nodo raiz;
@@ -18,7 +20,7 @@ public class TrieMaterias implements Materias{
         private int[] docentes;
         private ListaEnlazada estudiantes;
         private int inscriptos;
-        private TrieOtrosNombres otrosNombres;
+        private otrosNombres otrosNombres;
     
         public Nodo() {
             this.hijos = new Nodo[256];
@@ -62,4 +64,5 @@ public class TrieMaterias implements Materias{
             nodo = nodo.hijos[ascii];
         }
         return nodo;
+    }    
 }   
