@@ -1,47 +1,33 @@
 package aed;
 
-import java.util.List;
-
-import aed.TrieCarreras.Nodo;
-import aed.interfaces.Estudiantes;
-import aed.interfaces.Materias;
-import aed.interfaces.OtrosNombres;
-import aed.interfaces.Estudiantes;
+import java.util.ArrayList;
 @SuppressWarnings("unused")
-
-public class TrieMaterias implements Materias{
-    //Atributos
+public class TrieArray<T> {
     private Nodo raiz;
-    private int tamaño; //cantidad de claves
+    private int tamaño;
     
-    //Clase auxiliar
     public class Nodo{
         private Nodo[] hijos;
         private Character valor;
-        private String nombre;
-        private int[] docentes;
-        private Estudiantes estudiantes;
-        private int inscriptos;
-        private OtrosNombres otrosNombres;
+        private ArrayList<Object> data ; 
     
         public Nodo() {
             this.hijos = new Nodo[256];
+            this.data = new ArrayList<>();;
             this.valor = null;
-            this.nombre = null;
-            this.docentes = null;
-            this.estudiantes = null;
-            this.inscriptos = 0;
-            this.otrosNombres = null;
+        }   
+
+        public void addData(Object data) {
+            this.data.add(data);
         }
     }
 
-    //Métodos
-    public TrieMaterias(){
+    public TrieArray(){
         this.raiz = new Nodo();
         this.tamaño = 0;
     }
 
-    public void NuevaMateria(String Nombre){
+    public void NuevoElem(String Nombre, ArrayList<Object> Data){
         Nodo nodo = raiz;
         for (Character c : Nombre.toCharArray()){
             int ascii = (int) c;
@@ -51,8 +37,7 @@ public class TrieMaterias implements Materias{
             }
             nodo = nodo.hijos[ascii];
         }
-        nodo.nombre = Nombre;
-        nodo.docentes = new int[4];
+        nodo.data = Data;
         tamaño++;
     }
 
@@ -66,5 +51,17 @@ public class TrieMaterias implements Materias{
             nodo = nodo.hijos[ascii];
         }
         return nodo;
-    }    
-}   
+    }
+
+    public ArrayList<Object> getData(String Nombre) {
+        Nodo nodo = raiz;
+        for (Character c : Nombre.toCharArray()) {
+            int ascii = (int) c;
+            if (nodo.hijos[ascii] == null) {
+                return null;
+            }
+            nodo = nodo.hijos[ascii];
+        }
+        return nodo.data;
+    }
+}

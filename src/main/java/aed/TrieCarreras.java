@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import aed.interfaces.Carreras;
 import aed.interfaces.Materias;
+
 @SuppressWarnings("unused")
 public class TrieCarreras implements Carreras{
     //Atributos
@@ -24,6 +25,7 @@ public class TrieCarreras implements Carreras{
             this.nombre = null;
             this.materias = null;
         }
+        
     }
 
     //métodos
@@ -42,7 +44,7 @@ public class TrieCarreras implements Carreras{
             }
             nodo = nodo.hijos[ascii];
         }
-        nodo.materias = new Materias();
+        nodo.materias = new TrieMaterias();
         nodo.nombre = Nombre;
         tamaño++;
     }

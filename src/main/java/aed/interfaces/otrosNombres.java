@@ -1,5 +1,5 @@
 package aed.interfaces;
 
-public interface otrosNombres {
+public interface OtrosNombres {
     
 }
