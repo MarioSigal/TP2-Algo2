@@ -6,12 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class TrieTests {
   
-  String[] nombres = new String[]{"Santiago","Santino","Sandra","Alexander","Alex","Marco","Marcos"};
+  String[] nombres = new String[]{"Santiago","Sandra","Alexander","Marco","Marcos","Santino","Alex"};
   String[] nombresOrdenados = new String[]{"Alex","Alexander","Marco","Marcos","Sandra","Santiago","Santino"};
   int[] numeros = new int[]{7,8,10,6,8,8,9};
   @Test
   void definiciones(){
-    TrieV2<Integer> miTrie = new TrieV2<>(); 
+    TrieList<Integer> miTrie = new TrieList<>(); 
     miTrie.definir("Santiago", 8);
     miTrie.definir("Santino", 5);
     assertEquals(5, miTrie.obtener("Santino"));
@@ -29,7 +29,7 @@ public class TrieTests {
   }
   @Test 
   void borrado(){
-    TrieV2<Integer> miTrie = new TrieV2<>();
+    TrieList<Integer> miTrie = new TrieList<>();
     for (int i = 0; i < nombres.length; i++) {
       miTrie.definir(nombres[i],numeros[i]);
     }
@@ -59,7 +59,7 @@ public class TrieTests {
 
   @Test
   void inorder(){
-    TrieV2<Integer> miTrie = new TrieV2<>();
+    TrieList<Integer> miTrie = new TrieList<>();
     for (int i = 0; i < nombres.length; i++) {
       miTrie.definir(nombres[i],numeros[i]);
     }
@@ -78,6 +78,89 @@ public class TrieTests {
     for (int i = 0; i < this.nombresOrdenados.length; i++) {
       assertEquals(nombresOrdenados[i], nombres.obtener(i));
     }
+
+  }
+
+  @Test
+  void inorder2(){
+    TrieList<String> trieNombres = new TrieList<>();
+    String[] nombres2 = new String[]{"Jose","Juan","Lucia","Jacinto","Luciana","Roberto","Jeremias","Jaime","Mario","Marcos","Manuel"}; 
+    
+    for(String nombre : nombres2){
+      trieNombres.definir(nombre,nombre);
+    }
+
+    assertEquals(11, trieNombres.longitud());
+
+    trieNombres.borrar("Jose");
+    trieNombres.borrar("Lucia");
+    trieNombres.borrar("Marcos");
+
+    assertEquals(8, trieNombres.longitud());
+
+    assertEquals(false, trieNombres.esta("Jose"));
+    assertEquals(false, trieNombres.esta("Lucia"));
+    assertEquals(false, trieNombres.esta("Marcos"));
+
+    ListaEnlazada<String> lista = trieNombres.obtenerElems(); 
+    Iterador<String> iterador = lista.iterador();
+    
+    String[] nombresOrdenados2 = new String[]{"Jacinto","Jaime","Jeremias","Juan","Luciana","Manuel","Mario","Roberto"};
+    
+    for(int i = 0 ; i < lista.longitud() ; i++){
+      assertEquals(nombresOrdenados2[i], iterador.siguiente());
+    }
+
+    trieNombres.definir("Jose","Jose");
+    trieNombres.definir("Lucia","Lucia");
+    trieNombres.definir("Marcos","Marcos");
+
+    assertEquals(11, trieNombres.longitud());
+
+    assertEquals(true, trieNombres.esta("Jose"));
+    assertEquals(true, trieNombres.esta("Lucia"));
+    assertEquals(true, trieNombres.esta("Marcos"));
+
+
+    for (int i = 0; i < nombres2.length; i++) {
+      trieNombres.borrar(nombres2[i]);
+    }
+
+    assertEquals(0, trieNombres.longitud());
+
+    lista = trieNombres.obtenerElems(); 
+
+    assertEquals(0, lista.longitud());
+    assertEquals(false, lista.iterador().haySiguiente());
+
+
+
+  }
+
+  @Test
+  void redefinir(){
+    TrieList<Integer> trie = new TrieList<>(); 
+    for (int i = 0; i < nombres.length; i++) {
+      trie.definir(nombres[i], numeros[i]);
+    }
+    assertEquals(7, trie.longitud());
+
+    assertEquals(8, trie.obtener("Sandra"));
+    assertEquals(6, trie.obtener("Marco"));
+    trie.definir("Sandra", 5);
+    trie.definir("Marco", 10);
+    assertEquals(7, trie.longitud());
+    assertEquals(5, trie.obtener("Sandra"));
+    assertEquals(10, trie.obtener("Marco"));
+    assertEquals(true, trie.esta("Sandra"));
+    trie.borrar("Sandra");
+    assertEquals(6, trie.longitud());
+    assertEquals(false, trie.esta("Sandra"));
+    trie.definir("Sandra", 2);
+    assertEquals(7, trie.longitud());
+    assertEquals(true, trie.esta("Sandra"));
+    assertEquals(2, trie.obtener("Sandra"));
+
 
   }
 }
