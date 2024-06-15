@@ -2,13 +2,13 @@ package aed;
 
 import aed.SistemaSIU.CargoDocente;
 
-public class dataMateria {
+public class DataMateria {
   private int[] plantelDocente;
   private ListaEnlazada<String> inscriptos; 
   private ListaEnlazada<String> otrosNombres; 
   private ListaEnlazada<Materias> otrosTries; 
   
-  public dataMateria(){
+  public DataMateria(){
     this.plantelDocente = new int[4];
     this.inscriptos = new ListaEnlazada<>();
     this.otrosNombres = new ListaEnlazada<>();
