@@ -4,6 +4,7 @@ import aed.interfaces.Sistema;
 
 public class SistemaSIU implements Sistema {
     // Completar atributos privados
+    private
 
     public enum CargoDocente{
         AY2,
