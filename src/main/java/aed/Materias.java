@@ -1,11 +1,14 @@
 package aed;
+import aed.interfaces.Materias;
 
-public class Materias {
+
+
+public class Materias implements Materias {
   
-  private TrieList<DataMateria> trieMaterias;
+  private TrieDiccionario<DataMateria> trieMaterias;
 
   public Materias(){
-    this.trieMaterias = new TrieList<>(); 
+    this.trieMaterias = new TrieDiccionario<>(); 
   }
 
   public void agregarMateria(String nombreMateria, DataMateria data){
