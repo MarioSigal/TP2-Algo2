@@ -7,18 +7,22 @@ public class Carreras implements Carreras{
     private TrieDiccionario<Materias> trieCarreras;
 
     public Carreras(){
-        this.trieCarreras = new TrieDiccionaro<>();
+        this.trieCarreras = new TrieDiccionario<>();
     }
 
     public void agregarCarrera(String nombreCarrera, Materias trieMaterias){
         trieCarreras.definir(nombreCarrera,trieMaterias);
     }
 
-    public Materias obtenerCarrera(String nombreCarrera){
+    public Materias obtenerMateriasCarrera(String nombreCarrera){
         return trieCarreras.obtener(nombreCarrera);
     }
 
-    public ListaEnlazada<String> obtenesListaDeCarreras(){
+    public ListaEnlazada<String> obtenerListaDeCarreras(){
         return trieCarreras.obtenerElems();
+    }
+
+    public boolean estaRegistrada(String nombreCarrera){
+        return this.trieCarreras.esta(nombreCarrera); 
     }
 }

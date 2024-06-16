@@ -3,8 +3,8 @@ package aed;
 import aed.interfaces.Sistema;
 
 public class SistemaSIU implements Sistema {
-    // Completar atributos privados
-    private
+    private Carreras carreras; 
+    private Estudiantes estudiantes; 
 
     public enum CargoDocente{
         AY2,
@@ -14,7 +14,32 @@ public class SistemaSIU implements Sistema {
     }
 
     public SistemaSIU(InfoMateria[] materiasEnCarreras, String[] libretasUniversitarias){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        this.carreras = new Carreras();
+        this.estudiantes = new Estudiantes();
+
+        for(String lu : libretasUniversitarias){
+            this.estudiantes.registrarEnelSistema(lu); 
+        }
+
+        for(InfoMateria info : materiasEnCarreras){
+            ParCarreraMateria[] pares = info.getParesCarreraMateria();
+            DataMateria data = new DataMateria(); 
+
+            for(ParCarreraMateria par : pares){
+                String carrera = par.getCarrera();
+                String nombreMateria = par.getNombreMateria(); 
+                
+                if(!this.carreras.estaRegistrada(carrera)){
+                    Materias materias = new Materias(); 
+                    this.carreras.agregarCarrera(carrera, materias);
+                }
+                else{
+                    Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+                    materiasCarrera.agregarMateria(nombreMateria, data); 
+                }
+
+            }
+        }
     }
 
     public void inscribir(String estudiante, String carrera, String materia){

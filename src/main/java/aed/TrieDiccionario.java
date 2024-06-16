@@ -25,7 +25,7 @@ public class TrieDiccionario<T> implements Diccionario<T>{
 
   }
 
-  public TrieList(){
+  public TrieDiccionario(){
     this.raiz = new Nodo();
     this.longitud = 0;
   }
