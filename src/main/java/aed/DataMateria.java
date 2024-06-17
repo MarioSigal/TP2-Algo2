@@ -13,6 +13,9 @@ public class DataMateria {
     this.inscriptos = new ListaEnlazada<>();
     this.otrosNombres = new ListaEnlazada<>();
     this.otrosTries = new ListaEnlazada<>();
+    for(int i = 0 ; i < 4 ; i++){
+      this.plantelDocente[i] = 0; 
+    }
   }
 
   public void agregarAlumno(String lu){

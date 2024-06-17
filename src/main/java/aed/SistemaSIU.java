@@ -28,14 +28,19 @@ public class SistemaSIU implements Sistema {
             for(ParCarreraMateria par : pares){
                 String carrera = par.getCarrera();
                 String nombreMateria = par.getNombreMateria(); 
-                
+                data.agregarNombre(nombreMateria);
+
                 if(!this.carreras.estaRegistrada(carrera)){
                     Materias materias = new Materias(); 
                     this.carreras.agregarCarrera(carrera, materias);
+                    materias.agregarMateria(nombreMateria, data);
+                    data.agregarTrie(materias);
+
                 }
                 else{
                     Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
                     materiasCarrera.agregarMateria(nombreMateria, data); 
+                    data.agregarTrie(materiasCarrera);
                 }
 
             }
@@ -43,15 +48,22 @@ public class SistemaSIU implements Sistema {
     }
 
     public void inscribir(String estudiante, String carrera, String materia){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        this.estudiantes.inscribirAMateria(estudiante);
+        Materias materiasCarrera =  this.carreras.obtenerMateriasCarrera(carrera);
+        DataMateria  materiaCarrera = materiasCarrera.obtenerMateria(materia); 
+        materiaCarrera.agregarAlumno(materia);
     }
 
     public void agregarDocente(CargoDocente cargo, String carrera, String materia){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
+        materiaCarrera.agregarDocente(cargo);  
     }
 
     public int[] plantelDocente(String materia, String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
+        return materiaCarrera.obtenerPlantel(); 
     }
 
     public void cerrarMateria(String materia, String carrera){
@@ -59,22 +71,28 @@ public class SistemaSIU implements Sistema {
     }
 
     public int inscriptos(String materia, String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
+        return materiaCarrera.cantInscriptos(); 
     }
 
     public boolean excedeCupo(String materia, String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
+        return materiaCarrera.excedeCupo(); 
     }
 
     public String[] carreras(){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        return this.carreras.obtenerListaDeCarreras();
+
     }
 
     public String[] materias(String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        return materiasCarrera.obtenerListaDeMaterias(); 
     }
 
     public int materiasInscriptas(String estudiante){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        return estudiantes.cantMateriasInscriptas(estudiante); 
     }
 }

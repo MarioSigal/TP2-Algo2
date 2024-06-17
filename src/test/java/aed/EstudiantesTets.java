@@ -7,14 +7,14 @@ public class EstudiantesTets {
   @Test
   void test1(){
     Estudiantes estudiantes = new Estudiantes();
-    estudiantes.inscribirAlumno("Juan");
-    estudiantes.inscribirAlumno("Pedro");
-    estudiantes.inscribirAlumno("Lucia");
-    estudiantes.inscribirAlumno("Pedro");
-    estudiantes.inscribirAlumno("Lucia");
-    estudiantes.inscribirAlumno("Roberto");
-    estudiantes.inscribirAlumno("Juan");
-    estudiantes.inscribirAlumno("Lucia");
+    estudiantes.inscribirAMateria("Juan");
+    estudiantes.inscribirAMateria("Pedro");
+    estudiantes.inscribirAMateria("Lucia");
+    estudiantes.inscribirAMateria("Pedro");
+    estudiantes.inscribirAMateria("Lucia");
+    estudiantes.inscribirAMateria("Roberto");
+    estudiantes.inscribirAMateria("Juan");
+    estudiantes.inscribirAMateria("Lucia");
 
     assertEquals(2, estudiantes.cantMateriasInscriptas("Juan"));
     assertEquals(1, estudiantes.cantMateriasInscriptas("Roberto"));

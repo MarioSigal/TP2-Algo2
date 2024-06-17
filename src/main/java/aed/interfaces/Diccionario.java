@@ -35,10 +35,10 @@ public interface Diccionario<T>{
     public void borrar(String clave);
     
     /**
-     * Devuelve ListaEnlazada<String> con las claves del diccionario en orden lexicografico.
+     * Devuelve String[] con las claves del diccionario en orden lexicografico.
      * 
      */
-    public ListaEnlazada<String> obtenerElems();
+    public String[] obtenerElems();
 
 
 } 

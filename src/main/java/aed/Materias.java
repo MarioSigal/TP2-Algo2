@@ -19,7 +19,7 @@ public class Materias implements Materias {
     return trieMaterias.obtener(nombreMateria); 
   }
 
-  public ListaEnlazada<String> obtenerListaDeMaterias(){
+  public String[] obtenerListaDeMaterias(){
     return trieMaterias.obtenerElems(); 
   }
   

@@ -98,25 +98,26 @@ public class TrieDiccionario<T> implements Diccionario<T>{
     this.longitud -= 1; 
   }
 
-  public ListaEnlazada<String> obtenerElems(){
-    ListaEnlazada<String> palabras = new ListaEnlazada<>();
+  public String[] obtenerElems(){
+    ArrayConSig palabras = new ArrayConSig(this.longitud);
     inorder(raiz, palabras);
-    return palabras; 
+    return palabras.devolverArray(); 
   }
 
-  public void inorder(Nodo nodo, ListaEnlazada<String> lista){
+  public void inorder(Nodo nodo, ArrayConSig array){
     if(nodo.significado != null){
-      lista.agregarAtras(nodo.palabra);
+      array.agregarElem(nodo.palabra);
     }
     ArrayList<Nodo> hijos = nodo.hijos;
     if (nodo.cantHijos > 0) {
       for (int i = 0; i < nodo.hijos.size(); i++) {
         
         if(hijos.get(i) != null){
-          inorder(hijos.get(i), lista);
+          inorder(hijos.get(i), array);
         }
-        
       }
     }
   }
+
+
 }

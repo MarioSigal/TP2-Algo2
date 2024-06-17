@@ -11,7 +11,7 @@ public class TrieTests {
   int[] numeros = new int[]{7,8,10,6,8,8,9};
   @Test
   void definiciones(){
-    TrieList<Integer> miTrie = new TrieList<>(); 
+    TrieDiccionario<Integer> miTrie = new TrieDiccionario<>(); 
     miTrie.definir("Santiago", 8);
     miTrie.definir("Santino", 5);
     assertEquals(5, miTrie.obtener("Santino"));
@@ -29,7 +29,7 @@ public class TrieTests {
   }
   @Test 
   void borrado(){
-    TrieList<Integer> miTrie = new TrieList<>();
+    TrieDiccionario<Integer> miTrie = new TrieDiccionario<>();
     for (int i = 0; i < nombres.length; i++) {
       miTrie.definir(nombres[i],numeros[i]);
     }
@@ -59,31 +59,31 @@ public class TrieTests {
 
   @Test
   void inorder(){
-    TrieList<Integer> miTrie = new TrieList<>();
+    TrieDiccionario<Integer> miTrie = new TrieDiccionario<>();
     for (int i = 0; i < nombres.length; i++) {
       miTrie.definir(nombres[i],numeros[i]);
     }
-    ListaEnlazada<String> nombres = miTrie.obtenerElems();
+    String[] nombres = miTrie.obtenerElems();
     for (int i = 0; i < this.nombresOrdenados.length; i++) {
-      assertEquals(nombresOrdenados[i], nombres.obtener(i));
+      assertEquals(nombresOrdenados[i], nombres[i]);
     }
 
     miTrie.borrar("Marco");
     nombres = miTrie.obtenerElems(); 
     assertEquals(6, miTrie.longitud());
-    assertEquals(6, nombres.longitud());
+    assertEquals(6, nombres.length);
 
     nombresOrdenados = new String[]{"Alex","Alexander","Marcos","Sandra","Santiago","Santino"};
 
     for (int i = 0; i < this.nombresOrdenados.length; i++) {
-      assertEquals(nombresOrdenados[i], nombres.obtener(i));
+      assertEquals(nombresOrdenados[i], nombres[i]);
     }
 
   }
 
   @Test
   void inorder2(){
-    TrieList<String> trieNombres = new TrieList<>();
+    TrieDiccionario<String> trieNombres = new TrieDiccionario<>();
     String[] nombres2 = new String[]{"Jose","Juan","Lucia","Jacinto","Luciana","Roberto","Jeremias","Jaime","Mario","Marcos","Manuel"}; 
     
     for(String nombre : nombres2){
@@ -102,13 +102,13 @@ public class TrieTests {
     assertEquals(false, trieNombres.esta("Lucia"));
     assertEquals(false, trieNombres.esta("Marcos"));
 
-    ListaEnlazada<String> lista = trieNombres.obtenerElems(); 
-    Iterador<String> iterador = lista.iterador();
+    String[] lista = trieNombres.obtenerElems(); 
+    // Iterador<String> iterador = lista.iterador();
     
     String[] nombresOrdenados2 = new String[]{"Jacinto","Jaime","Jeremias","Juan","Luciana","Manuel","Mario","Roberto"};
     
-    for(int i = 0 ; i < lista.longitud() ; i++){
-      assertEquals(nombresOrdenados2[i], iterador.siguiente());
+    for(int i = 0 ; i < lista.length ; i++){
+      assertEquals(nombresOrdenados2[i], lista[i]);
     }
 
     trieNombres.definir("Jose","Jose");
@@ -130,8 +130,8 @@ public class TrieTests {
 
     lista = trieNombres.obtenerElems(); 
 
-    assertEquals(0, lista.longitud());
-    assertEquals(false, lista.iterador().haySiguiente());
+    assertEquals(0, lista.length);
+    
 
 
 
@@ -139,7 +139,7 @@ public class TrieTests {
 
   @Test
   void redefinir(){
-    TrieList<Integer> trie = new TrieList<>(); 
+    TrieDiccionario<Integer> trie = new TrieDiccionario<>(); 
     for (int i = 0; i < nombres.length; i++) {
       trie.definir(nombres[i], numeros[i]);
     }

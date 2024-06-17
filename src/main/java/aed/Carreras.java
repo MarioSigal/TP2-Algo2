@@ -18,7 +18,7 @@ public class Carreras implements Carreras{
         return trieCarreras.obtener(nombreCarrera);
     }
 
-    public ListaEnlazada<String> obtenerListaDeCarreras(){
+    public String[] obtenerListaDeCarreras(){
         return trieCarreras.obtenerElems();
     }
 
