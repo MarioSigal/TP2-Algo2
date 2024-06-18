@@ -110,10 +110,10 @@ public class TrieDiccionario<T> implements Diccionario<T>{
     }
     ArrayList<Nodo> hijos = nodo.hijos;
     if (nodo.cantHijos > 0) {
-      for (int i = 0; i < nodo.hijos.size(); i++) {
+      for (int i = 0; i < nodo.hijos.size(); i++) {//recorrer el array nos cuesta O(256) que es O(1).
         
         if(hijos.get(i) != null){
-          inorder(hijos.get(i), array);
+          inorder(hijos.get(i), array);//La recursion nos cuesta O(sum_{keK}{long(k)}).
         }
       }
     }
