@@ -1,5 +1,5 @@
-package aed;
-
+package aed.interfaces;
+import aed.ListaEnlazada;
 interface Secuencia<T> {
 
     /**

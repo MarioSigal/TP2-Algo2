@@ -1,6 +1,5 @@
 package aed.interfaces;
 
-import aed.ListaEnlazada;
 
 public interface Diccionario<T>{
 

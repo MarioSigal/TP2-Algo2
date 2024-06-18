@@ -1,5 +1,7 @@
 package aed.interfaces;
 
+import aed.DataMateria;
+
 public interface Materias {
     /**
      * Crea una nueva materia con su informacion correspondiente.
