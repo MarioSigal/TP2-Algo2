@@ -1,9 +1,9 @@
 package aed;
 
-public class Estudiantes {
+public class EstudiantesImpl {
   private TrieDiccionario<Integer> trieEstudiantes;
 
-  public Estudiantes(){
+  public EstudiantesImpl(){
     this.trieEstudiantes = new TrieDiccionario<>();
   }
 
