@@ -7,6 +7,17 @@ public class EstudiantesTets {
   @Test
   void test1(){
     Estudiantes estudiantes = new Estudiantes();
+    estudiantes.registrarEnelSistema("Juan");
+    estudiantes.registrarEnelSistema("Pedro");
+    estudiantes.registrarEnelSistema("Lucia");
+    estudiantes.registrarEnelSistema("Pedro");
+    estudiantes.registrarEnelSistema("Lucia");
+    estudiantes.registrarEnelSistema("Roberto");
+    estudiantes.registrarEnelSistema("Juan");
+    estudiantes.registrarEnelSistema("Lucia");
+
+
+    
     estudiantes.inscribirAMateria("Juan");
     estudiantes.inscribirAMateria("Pedro");
     estudiantes.inscribirAMateria("Lucia");

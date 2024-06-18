@@ -3,11 +3,11 @@ import aed.interfaces.Materias;
 
 
 
-public class Materias implements Materias {
+public class MateriasImpl implements Materias {
   
   private TrieDiccionario<DataMateria> trieMaterias;
 
-  public Materias(){
+  public MateriasImpl(){
     this.trieMaterias = new TrieDiccionario<>(); 
   }
 
@@ -21,6 +21,10 @@ public class Materias implements Materias {
 
   public String[] obtenerListaDeMaterias(){
     return trieMaterias.obtenerElems(); 
+  }
+
+  public void borrarMateria(String materia){
+    this.trieMaterias.borrar(materia);
   }
   
 

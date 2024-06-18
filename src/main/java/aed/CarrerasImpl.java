@@ -2,19 +2,19 @@ package aed;
 
 import aed.interfaces.Carreras;
 
-public class Carreras implements Carreras{
+public class CarrerasImpl implements Carreras{
 
-    private TrieDiccionario<Materias> trieCarreras;
+    private TrieDiccionario<MateriasImpl> trieCarreras;
 
-    public Carreras(){
+    public CarrerasImpl(){
         this.trieCarreras = new TrieDiccionario<>();
     }
 
-    public void agregarCarrera(String nombreCarrera, Materias trieMaterias){
+    public void agregarCarrera(String nombreCarrera, MateriasImpl trieMaterias){
         trieCarreras.definir(nombreCarrera,trieMaterias);
     }
 
-    public Materias obtenerMateriasCarrera(String nombreCarrera){
+    public MateriasImpl obtenerMateriasCarrera(String nombreCarrera){
         return trieCarreras.obtener(nombreCarrera);
     }
 

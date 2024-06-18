@@ -3,7 +3,7 @@ package aed;
 import aed.interfaces.Sistema;
 
 public class SistemaSIU implements Sistema {
-    private Carreras carreras; 
+    private CarrerasImpl carreras; 
     private Estudiantes estudiantes; 
 
     public enum CargoDocente{
@@ -14,7 +14,7 @@ public class SistemaSIU implements Sistema {
     }
 
     public SistemaSIU(InfoMateria[] materiasEnCarreras, String[] libretasUniversitarias){
-        this.carreras = new Carreras();
+        this.carreras = new CarrerasImpl();
         this.estudiantes = new Estudiantes();
 
         for(String lu : libretasUniversitarias){
@@ -31,14 +31,14 @@ public class SistemaSIU implements Sistema {
                 data.agregarNombre(nombreMateria);
 
                 if(!this.carreras.estaRegistrada(carrera)){
-                    Materias materias = new Materias(); 
+                    MateriasImpl materias = new MateriasImpl(); 
                     this.carreras.agregarCarrera(carrera, materias);
                     materias.agregarMateria(nombreMateria, data);
                     data.agregarTrie(materias);
 
                 }
                 else{
-                    Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+                    MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
                     materiasCarrera.agregarMateria(nombreMateria, data); 
                     data.agregarTrie(materiasCarrera);
                 }
@@ -49,35 +49,43 @@ public class SistemaSIU implements Sistema {
 
     public void inscribir(String estudiante, String carrera, String materia){
         this.estudiantes.inscribirAMateria(estudiante);
-        Materias materiasCarrera =  this.carreras.obtenerMateriasCarrera(carrera);
+        MateriasImpl materiasCarrera =  this.carreras.obtenerMateriasCarrera(carrera);
         DataMateria  materiaCarrera = materiasCarrera.obtenerMateria(materia); 
-        materiaCarrera.agregarAlumno(materia);
+        materiaCarrera.agregarAlumno(estudiante);
     }
 
     public void agregarDocente(CargoDocente cargo, String carrera, String materia){
-        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
         DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
         materiaCarrera.agregarDocente(cargo);  
     }
 
     public int[] plantelDocente(String materia, String carrera){
-        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
         DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
         return materiaCarrera.obtenerPlantel(); 
     }
 
     public void cerrarMateria(String materia, String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera); 
+        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia); 
+        ListaEnlazada<String> alumnosInscriptos = materiaCarrera.obtenerInscriptos();
+        Iterador<String> iteradorAlumnos = alumnosInscriptos.iterador();
+        for(int i = 0 ; i < alumnosInscriptos.longitud(); i ++){
+            String luAlumno = iteradorAlumnos.siguiente();
+            this.estudiantes.desinscribir(luAlumno); 
+        }
+        materiaCarrera.cerrarMateria(); 
     }
 
     public int inscriptos(String materia, String carrera){
-        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
         DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
         return materiaCarrera.cantInscriptos(); 
     }
 
     public boolean excedeCupo(String materia, String carrera){
-        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
         DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
         return materiaCarrera.excedeCupo(); 
     }
@@ -88,7 +96,7 @@ public class SistemaSIU implements Sistema {
     }
 
     public String[] materias(String carrera){
-        Materias materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
         return materiasCarrera.obtenerListaDeMaterias(); 
     }
 

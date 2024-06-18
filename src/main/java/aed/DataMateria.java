@@ -6,7 +6,7 @@ public class DataMateria {
   private int[] plantelDocente;
   private ListaEnlazada<String> inscriptos; 
   private ListaEnlazada<String> otrosNombres; 
-  private ListaEnlazada<Materias> otrosTries; 
+  private ListaEnlazada<MateriasImpl> otrosTries; 
   
   public DataMateria(){
     this.plantelDocente = new int[4];
@@ -26,7 +26,7 @@ public class DataMateria {
     this.otrosNombres.agregarAtras(nombreMateria);
   }
    
-  public void agregarTrie(Materias trieMateria){
+  public void agregarTrie(MateriasImpl trieMateria){
     this.otrosTries.agregarAtras(trieMateria);
   }
 
@@ -54,6 +54,20 @@ public class DataMateria {
     return this.inscriptos.longitud(); 
   }
 
+  public ListaEnlazada<String> obtenerInscriptos(){
+    return this.inscriptos;
+  }
+
+  public void cerrarMateria(){
+    Iterador<String> iteradorNombres = this.otrosNombres.iterador();
+    Iterador<MateriasImpl> iteradorTries = this.otrosTries.iterador();
+    for(int i = 0 ; i < this.otrosNombres.longitud(); i++){
+      String nombreMateria = iteradorNombres.siguiente();
+      MateriasImpl trieMateria = iteradorTries.siguiente();
+      trieMateria.borrarMateria(nombreMateria);
+    }
+  }
+
   public boolean excedeCupo(){
     int cupo;
     int cupoSegunAY2 = this.plantelDocente[3] * 30;
@@ -63,7 +77,7 @@ public class DataMateria {
 
     cupo = min(min(cupoSegunAY2,cupoSegunAY1),min(cupoSegunJTP,cupoSegunPROF));
     
-    return (cantInscriptos() <= cupo); 
+    return (cantInscriptos() > cupo); 
 
   }
 
