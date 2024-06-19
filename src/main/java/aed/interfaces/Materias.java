@@ -23,4 +23,11 @@ public interface Materias {
      *  -MateriasImpl:O(sum_{meM}{long(m)}), donde M es el conjunto de Materias registradas.
      */
     public String[] obtenerListaDeMaterias();
+
+   /**
+     * Elimina la Materia de el registro.
+     * Complejidad
+     *  -MateriasImpl: O(long(m)) donde m es la materia a eliminar
+     */
+    public void borrarMateria(String materia);
 }
