@@ -3,7 +3,7 @@ package aed;
 import java.util.ArrayList;
 import aed.interfaces.Diccionario;
 /**
- * MODULOS CON INVARIANTES DE REPRESENTACION:
+ * MODULO CON INVARIANTE DE REPRESENTACION:
  *  Modulo Nodo{
  *    hijos: Array<Nodo>;
  *    significado: T;
@@ -18,7 +18,8 @@ import aed.interfaces.Diccionario;
  *      n.palabra Debe ser la palabra formada por las letras representadas
  *   por los índices de los nodos anteriores en la cadena de nodos.}
  *      }
- *    
+ *   }
+ *   
  *  Modulo TrieDiccionario<T> implementa Diccionario<T>{
  *    raiz: Nodo;
  *    longitud: int;
@@ -26,6 +27,7 @@ import aed.interfaces.Diccionario;
  *   InvRep(T:TrieDiccionario<T>){
  *      longitud >=0
  *      }
+ *   }
  */
 public class TrieDiccionario<T> implements Diccionario<T>{
   private Nodo raiz;
