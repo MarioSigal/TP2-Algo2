@@ -5,16 +5,23 @@ public class ArrayConSig {
   private int siguiente;
 
   public ArrayConSig(int capacidad){
-    this.array = new String[capacidad];
-    this.siguiente = 0; 
+    this.array = new String[capacidad];                 // O(1)
+    this.siguiente = 0;                                 // O(1)
   }
+
+  // Complejidad O(1)
 
   public void agregarElem(String elem){
-    this.array[siguiente] = elem;
-    this.siguiente += 1; 
+    this.array[siguiente] = elem;                        // O(1) pues se setea la posicion de un array
+    this.siguiente += 1;                                 // O(1)
   }
 
+  // Complejidad O(1)
+
   public String[] devolverArray(){
-    return this.array; 
+    return this.array;                                   // O(1)
   }
+
+  // Complejidad O(1)
+
 }

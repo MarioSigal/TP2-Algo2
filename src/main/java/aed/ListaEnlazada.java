@@ -11,34 +11,45 @@ public class ListaEnlazada<T> implements Secuencia<T> {
     private class Nodo { 
         T valor;
         Nodo sig; 
+
         public Nodo (T v){
-            valor = v; 
+            valor = v; // O(1)
         } 
+
+        // Complejidad O(1)
     }
 
     public ListaEnlazada() {
-        primero = null;
-        ultimo = null; 
-        longitud = 0; 
+        primero = null;    // O(1)
+        ultimo = null;     // O(1)
+        longitud = 0;     // O(1)
     }
+
+    // Complejidad : O(1)
+
 
     public int longitud() {
-        return longitud; 
+        return longitud; // O(1)
     }
 
+    // Complejidad : O(1)
+
+
     public void agregarAtras(T elem) {
-        Nodo nuevoNodo = new Nodo(elem); 
-        if(ultimo != null){
-            ultimo.sig = nuevoNodo; 
+        Nodo nuevoNodo = new Nodo(elem);        // O(1) 
+        if(ultimo != null){                     // O(1)
+            ultimo.sig = nuevoNodo;             // O(1)
         }
         else{
-            primero = nuevoNodo; 
+            primero = nuevoNodo;                // O(1)
         }
-        ultimo = nuevoNodo; 
-        longitud = longitud + 1; 
+
+        ultimo = nuevoNodo;                     // O(1)
+        longitud = longitud + 1;                // O(1)
 
     }
     
+    // Complejidad : O(1)
 
     private class ListaIterador implements Iterador<T> {
     	
@@ -46,27 +57,34 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         private Nodo nodo;
         
         public ListaIterador(){
-            indice = 0; 
-            nodo = primero;
+            indice = 0;                         // O(1)
+            nodo = primero;                     // O(1)
         }
+        
+        // Complejidad O(1)
+
 
         public boolean haySiguiente() {
-            return indice != longitud; 
+            return indice != longitud;         // O(1)
         }
 
+        // Complejidad O(1)
+
         public T siguiente() {
-	        indice += 1; 
-            T valor = nodo.valor;
-            if(nodo.sig != null){
-                nodo = nodo.sig; 
+	        indice += 1;                       // O(1)
+            T valor = nodo.valor;              // O(1)
+            if(nodo.sig != null){              // O(1)
+                nodo = nodo.sig;               // O(1)
             }
             return valor; 
         }
+
+        // Complejidad O(1)
         
     }
 
     public Iterador<T> iterador() {
-	    return new ListaIterador();
+	    return new ListaIterador(); // O(1)
     }
-
+    // Complejidad O(1)
 }
