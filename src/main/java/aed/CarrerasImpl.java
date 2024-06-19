@@ -2,6 +2,16 @@ package aed;
 
 import aed.interfaces.Carreras;
 
+/**
+ * MODULO CON INVARIANTE DE REPRESENTACION:
+ *  Modulo CarrerasImpl implementa Carreras{
+ *    trieCarreras: TrieDiccionario<MateriasImpl>; 
+ *   
+ *   InvRep(C:CarrerasImpl){
+ *      trieCarreras != null;     
+ *      }
+ *   }
+ */
 public class CarrerasImpl implements Carreras{
 
     private TrieDiccionario<MateriasImpl> trieCarreras;
