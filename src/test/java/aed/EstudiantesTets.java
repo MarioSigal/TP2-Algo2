@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class EstudiantesTets {
   @Test
   void test1(){
-    Estudiantes estudiantes = new Estudiantes();
+    EstudiantesImpl estudiantes = new EstudiantesImpl();
     estudiantes.registrarEnelSistema("Juan");
     estudiantes.registrarEnelSistema("Pedro");
     estudiantes.registrarEnelSistema("Lucia");

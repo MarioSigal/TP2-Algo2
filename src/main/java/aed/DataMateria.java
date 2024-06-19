@@ -1,6 +1,7 @@
 package aed;
 
 import aed.SistemaSIU.CargoDocente;
+import aed.interfaces.Iterador;
 
 public class DataMateria {
   private int[] plantelDocente;

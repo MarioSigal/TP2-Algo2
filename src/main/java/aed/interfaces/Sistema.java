@@ -28,7 +28,7 @@ estudiantes de todas las carreras.
     
     /**
      * Agrega a un docente al plantel de la materia m de la carrera c, y al plantel de todas las otras materias que son sus
-equivalentes en el resto de las carreras. 
+     equivalentes en el resto de las carreras. 
      * Complejidad: O(|c|+ |m|).
      * 
      * @param cargo

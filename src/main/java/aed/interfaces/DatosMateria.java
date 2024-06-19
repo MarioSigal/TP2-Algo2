@@ -1,5 +1,9 @@
 package aed.interfaces;
 
+import aed.ListaEnlazada;
+import aed.MateriasImpl;
+import aed.SistemaSIU.CargoDocente;
+
 public interface DatosMateria{
     /**
      * Registra a el/la estudiante en la materia.

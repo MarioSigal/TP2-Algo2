@@ -1,10 +1,11 @@
 package aed;
 
+import aed.interfaces.Iterador;
 import aed.interfaces.Sistema;
 
 public class SistemaSIU implements Sistema {
     private CarrerasImpl carreras; 
-    private Estudiantes estudiantes; 
+    private EstudiantesImpl estudiantes; 
 
     public enum CargoDocente{
         AY2,
@@ -15,7 +16,7 @@ public class SistemaSIU implements Sistema {
 
     public SistemaSIU(InfoMateria[] materiasEnCarreras, String[] libretasUniversitarias){
         this.carreras = new CarrerasImpl();
-        this.estudiantes = new Estudiantes();
+        this.estudiantes = new EstudiantesImpl();
 
         for(String lu : libretasUniversitarias){
             this.estudiantes.registrarEnelSistema(lu); 
