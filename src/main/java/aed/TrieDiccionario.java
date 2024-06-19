@@ -11,11 +11,12 @@ import aed.interfaces.Diccionario;
  *    palabra: String;
  *    
  *   InvRep(n:Nodo){
- *      n.hijos.tamaño = 256 &&
+ *      n.hijos.tamaño = 256 && //hijos: ArrayList<Nodo> de tamaño 256.
  *      (ParaTodo i: int)((0 <= i <= 255) => n.hijos[i] != null <=> i es parte de una palabra)&&
  *      n.cantHijos = sm_{i=0}^{255}{if n.hijos[i]!= null then 1 else 0}
  *      n.significado!=null <=> n.palabra != null &&
- *      n.palabra es la palabra qe se forma con las posiciones anteriores en los Array<Nodo> de la cadena de nodos}
+ *      n.palabra Debe ser la palabra formada por las letras representadas
+ *   por los índices de los nodos anteriores en la cadena de nodos.}
  *      }
  *    
  *  Modulo TrieDiccionario<T> implementa Diccionario<T>{
@@ -23,7 +24,7 @@ import aed.interfaces.Diccionario;
  *    longitud: int;
  * 
  *   InvRep(T:TrieDiccionario<T>){
- *      0 <= longitud
+ *      longitud >=0
  *      }
  */
 public class TrieDiccionario<T> implements Diccionario<T>{
