@@ -1,6 +1,8 @@
 package aed;
 
-public class EstudiantesImpl {
+import aed.interfaces.Estudiantes;
+
+public class EstudiantesImpl implements Estudiantes{
   private TrieDiccionario<Integer> trieEstudiantes;
 
   public EstudiantesImpl(){
