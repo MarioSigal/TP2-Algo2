@@ -1,4 +1,10 @@
 package aed;
+/**
+ *  InvRep(a:ArrayConSig){
+ *    0 <= a.siguiente <= a.array.length
+ * }
+ * 
+**/
 
 public class ArrayConSig {
   private String[] array; 

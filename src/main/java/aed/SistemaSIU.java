@@ -48,24 +48,34 @@ public class SistemaSIU implements Sistema {
         }
     }
 
+
     public void inscribir(String estudiante, String carrera, String materia){
-        this.estudiantes.inscribirAMateria(estudiante);
-        MateriasImpl materiasCarrera =  this.carreras.obtenerMateriasCarrera(carrera);
-        DataMateria  materiaCarrera = materiasCarrera.obtenerMateria(materia); 
-        materiaCarrera.agregarAlumno(estudiante);
+        this.estudiantes.inscribirAMateria(estudiante);                                // O(1) pues estudiantes es de Tipo EstudiantesImpl
+        MateriasImpl materiasCarrera =  this.carreras.obtenerMateriasCarrera(carrera); // O(|carrera|) pues carreras es de tipo CarrerasImpl
+        DataMateria  materiaCarrera = materiasCarrera.obtenerMateria(materia);         // O(|materia|) pues materiasCarrera es de tipo MateriasImpl
+        materiaCarrera.agregarAlumno(estudiante);                                      // O(1) pues materiaCarrera es de tipo DataMateria
     }
+    // Complejidad : O(1) + O(|carrera|) + O(|materia|) + O(1) = O(|carrera|) + O(|materia|) = O(|carrera| + |materia|)
+
+
 
     public void agregarDocente(CargoDocente cargo, String carrera, String materia){
-        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
-        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
-        materiaCarrera.agregarDocente(cargo);  
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera); // O(|carrera|) pues carreras es de tipo CarrerasImpl
+        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);         // O(|materia|) pues materiasCarrera es de tipo MateriasImpl
+        materiaCarrera.agregarDocente(cargo);                                         // O(1) pues materiaCarrera es de tipo DataMateria  
     }
+    // Complejidad : O(1) + O(|carrera|) + O(|materia|) = O(|carrera|) + O(|materia|) = O(|carrera| + |materia|) 
+
+
 
     public int[] plantelDocente(String materia, String carrera){
-        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);
-        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);
-        return materiaCarrera.obtenerPlantel(); 
+        MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);  // O(|carrera|) pues carreras es de tipo CarrerasImpl
+        DataMateria materiaCarrera = materiasCarrera.obtenerMateria(materia);          // O(|materia|) pues materiasCarrera es de tipo MateriasImpl 
+        return materiaCarrera.obtenerPlantel();                                        // O(1) pues materiaCarrera es de tipo DataMateria 
     }
+    // Complejidad : O(1) + O(|carrera|) + O(|materia|) = O(|carrera|) + O(|materia|) = O(|carrera| + |materia|) 
+
+    
 
     public void cerrarMateria(String materia, String carrera){
         MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera); 

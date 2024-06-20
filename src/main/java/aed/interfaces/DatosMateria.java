@@ -26,7 +26,7 @@ public interface DatosMateria{
     public void agregarTrie(MateriasImpl trieMateria);
     
     /**
-     * Devuelve con int[] con el plantel Docente de esta materia [#PROF, #JTP, #AY1, #AY2]
+     * Devuelve un int[] con el plantel Docente de esta materia [#PROF, #JTP, #AY1, #AY2]
      * Complejidad:
      *  -DataMateria:O(1)
      */

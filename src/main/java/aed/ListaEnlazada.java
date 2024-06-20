@@ -2,6 +2,13 @@ package aed;
 import aed.interfaces.Secuencia;
 import aed.interfaces.Iterador;
 
+/* Invariante de representación:
+ * - longitud es igual a la cantidad de veces que se puede realizar primero.sig 
+ *   hasta obtener un null. 
+ * - ultimo es null o bien ultimo.sig es null
+ * - luego de hacer primero.sig (longitud - 1) veces se llega a ultimo. 
+ */
+
 public class ListaEnlazada<T> implements Secuencia<T> {
     
     private Nodo primero;
