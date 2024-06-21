@@ -5,7 +5,7 @@ import aed.interfaces.Estudiantes;
 /**
  * MODULO CON INVARIANTE DE REPRESENTACION:
  *  Modulo EstudiantesImpl implementa Estudiantes{
- *    trieEstudiantes: TrieDiccionario<String>; 
+ *    trieEstudiantes: TrieDiccionario<Integer>; 
  *   InvRep(E:EstudiantesImpl){
  *      E.trieEstudiantes != null     
  *      }
@@ -13,7 +13,7 @@ import aed.interfaces.Estudiantes;
  */
 
 public class EstudiantesImpl implements Estudiantes{
-  private TrieDiccionario<String> trieEstudiantes;
+  private TrieDiccionario<Integer> trieEstudiantes;
 
   public EstudiantesImpl(){
     this.trieEstudiantes = new TrieDiccionario<>();                 // O(1)
