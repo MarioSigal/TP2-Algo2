@@ -1,11 +1,14 @@
 package aed;
 /**
- *  InvRep(a:ArrayConSig){
- *    0 <= a.siguiente <= a.array.length
- * }
- * 
+ * MODULO CON INVARIANTE DE REPRESENTACION:
+ *  Modulo CarrerasImpl{
+ *    siguiente: int;
+ *    array: String[];
+ *   InvRep(a:ArrayConSig){
+ *     0 <= a.siguiente <= a.array.length
+ *     }
+ *   }
 **/
-
 public class ArrayConSig {
   private String[] array; 
   private int siguiente;
