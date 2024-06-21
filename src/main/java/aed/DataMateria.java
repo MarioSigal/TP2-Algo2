@@ -70,7 +70,7 @@ public class DataMateria {
   // Complejidad : O(1)
 
   public int cantInscriptos(){
-    return this.inscriptos.longitud();                     // O(1) pues es una lista enlazada
+    return this.inscriptos.longitud();                     // O(1) pues inscriptos es una lista enlazada
   }
   // Complejidad : O(1)
 

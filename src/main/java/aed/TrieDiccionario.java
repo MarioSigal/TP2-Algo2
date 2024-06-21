@@ -61,8 +61,9 @@ public class TrieDiccionario<T> implements Diccionario<T>{
 
   public void definir(String clave,T valor){
     Nodo nodoActual = this.raiz;                            // O(1)
-    for (Character c : clave.toCharArray()) {               // O(|clave|) pues se recorre cada caracter
-      int ascii = (int) c;                                  // O(1)
+    for (int i = 0 ; i < clave.length() ; i++) {            // O(|clave|) pues se recorre cada caracter
+      Character caracter = clave.charAt(i);                 // O(1)
+      int ascii = (int) caracter;                           // O(1)
       if(nodoActual.hijos.get(ascii) == null){              // O(1) pues se accede a una posicion de un vector
         Nodo nuevoNodo = new Nodo();                        // O(1)
         nodoActual.hijos.set(ascii,nuevoNodo);              // O(1) pues se setea una posicion del vector
@@ -76,14 +77,15 @@ public class TrieDiccionario<T> implements Diccionario<T>{
     nodoActual.significado = valor;                         // O(1)
     nodoActual.palabra = clave;                             //  O(1)
   }
-
   // Complejidad : O(1) + O(|clave|) * O(1) + O(1) = O(1) + O(|clave|) = O(|clave|)
+
 
 
   public boolean esta(String clave){
     Nodo nodoActual = this.raiz;                          // O(1)
-    for (Character c : clave.toCharArray()) {             // O(|clave|)
-      int ascii = (int) c;                                // O(1)
+    for (int i = 0 ; i < clave.length() ; i++) {          // O(|clave|)
+      Character caracter = clave.charAt(i);               // O(1)
+      int ascii = (int) caracter;                         // O(1)
       if(nodoActual.hijos.get(ascii) == null){            // O(1)
         return false;                                     // O(1)
       }
@@ -91,14 +93,14 @@ public class TrieDiccionario<T> implements Diccionario<T>{
     }
     return nodoActual.significado != null;                // O(1)
   }
-
   // Complejidad : O(1) + O(|clave|) * O(1) + O(1) = O(|clave|)
 
 
   public T obtener(String clave){                         
-    Nodo nodoActual = this.raiz;                           //  O(1)
-    for (Character c : clave.toCharArray()) {              //  O(|clave|)
-      int ascii = (int) c;                                 //  O(1)
+    Nodo nodoActual = this.raiz;                           // O(1)
+    for (int i = 0 ; i < clave.length() ; i++) {           // O(|clave|)
+      Character caracter = clave.charAt(i);                // O(1)
+      int ascii = (int) caracter;                          // O(1)
       nodoActual = nodoActual.hijos.get(ascii);            // O(1)
     }
     return nodoActual.significado;                         // O(1)
@@ -107,16 +109,18 @@ public class TrieDiccionario<T> implements Diccionario<T>{
   // Complejidad : O(1) + O(|clave|) * O(1) + O(1) = O(|clave|)
 
 
+
   public int longitud(){
     return this.longitud;                                 // O(1)
   }
-
   // Complejidad : O(1)
+
+
 
   public void borrar(String clave){
     Nodo nodoActual = this.raiz;                              // O(1)
     Nodo ultimoNodoValido = this.raiz;                        // O(1)
-    char[] claveArray = clave.toCharArray();                  // O(1)
+    char[] claveArray = clave.toCharArray();                  // O(|clave|)
     int indiceNodoAeliminar = (int) claveArray[0];            // O(1)
 
     for (int i = 0; i < claveArray.length; i++) {             // O(|clave|)
@@ -141,9 +145,9 @@ public class TrieDiccionario<T> implements Diccionario<T>{
     this.longitud -= 1;                                        // O(1) 
   }
 
-  // Complejidad : O(1) + O(|clave|) * O(1) + O(1) = O(|clave|)
-
-
+/*  Complejidad : O(1) + O(|clave|) + O(1) + O(|clave|) * O(1) + O(1) = 
+    O(1) + O(|clave|) + O(|clave|) = 2 O(|clave|) = O(|clave|)
+*/
 
   public String[] obtenerElems(){
     ArrayConSig palabras = new ArrayConSig(this.longitud);          // O(1)
