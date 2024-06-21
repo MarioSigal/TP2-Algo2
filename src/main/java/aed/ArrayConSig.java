@@ -1,7 +1,7 @@
 package aed;
 /**
  * MODULO CON INVARIANTE DE REPRESENTACION:
- *  Modulo CarrerasImpl{
+ *  Modulo ArrayConSig{
  *    siguiente: int;
  *    array: String[];
  *   InvRep(a:ArrayConSig){
