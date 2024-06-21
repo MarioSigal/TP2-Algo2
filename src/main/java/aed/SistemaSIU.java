@@ -3,6 +3,18 @@ package aed;
 import aed.interfaces.Iterador;
 import aed.interfaces.Sistema;
 
+/**
+ * MODULO CON INVARIANTE DE REPRESENTACION:
+ *  Modulo SistemaSIU implementa Sistema{
+ *    carreras: CarrerasImpl;
+ * estudiantes: EstudiantesImpl; 
+ *   InvRep(S: SistemaSiu){
+ *      S.carreras != null && 
+ *      S.estdiantes != null     
+ *      }
+ *   }
+ */
+
 public class SistemaSIU implements Sistema {
     private CarrerasImpl carreras; 
     private EstudiantesImpl estudiantes; 
