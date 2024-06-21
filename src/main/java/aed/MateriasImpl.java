@@ -1,6 +1,15 @@
 package aed;
 import aed.interfaces.Materias;
 
+/**
+ * MODULO CON INVARIANTE DE REPRESENTACION:
+ *  Modulo MateriasImpl implementa Materias{
+ *    trieMaterias: TrieDiccionario<DataMateria>; 
+ *   InvRep(M:MateriasImpl){
+ *      M.trieMaterias != null;     
+ *      }
+ *   }
+ */
 
 
 public class MateriasImpl implements Materias {
