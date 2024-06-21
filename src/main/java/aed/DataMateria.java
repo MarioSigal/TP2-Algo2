@@ -2,16 +2,26 @@ package aed;
 
 import aed.SistemaSIU.CargoDocente;
 import aed.interfaces.Iterador;
+import aed.interfaces.DatosMaterias;
 
-/*
- * Invariante de representacion:
- * - La longitud de otrosNombres y otrosTrie es igual
- * - Para cada posicion i de otrosNombres debe haber un elemento en la misma
- *   posicion de otrosTries tal que ese nombre este registrado en ese elemento
- *   (de tipo MateriasImpl)
+/** 
+ * MODULO CON INVARIANTE DE REPRESENTACION:
+ *  Modulo DataMateria implementa DatosMateria{
+ *    plantelDocente: int[];
+ *    inscriptos: ListaEnlazada<String>;
+ *    otrosNombres: ListaEnlazada<String>;
+ *    otrosTries: ListaEnlazada<MateriasImpl>;
+ *   InvRep(D:DataMateria){ 
+ *     D.otrosNombres.longitud == D.otrosTrie.longitud &&
+ *     (ParaTodo i:int) 0<=i<= D.otrosNombres.longitud => D.otrosTries[i].esta(D.otrosNombres[i])
+ *     (Para cada posicion i de otrosNombres debe haber un elemento en la misma
+ *      posicion de otrosTries tal que ese nombre este registrado en ese elemento
+ *      (de tipo MateriasImpl)) &&
+ *     D.plantelDocente.longitud=4;
+ *     }
+ *   }
  */
-
-public class DataMateria {
+public class DataMateria implements DatosMaterias {
   private int[] plantelDocente;
   private ListaEnlazada<String> inscriptos; 
   private ListaEnlazada<String> otrosNombres; 
