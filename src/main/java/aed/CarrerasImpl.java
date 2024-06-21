@@ -8,7 +8,7 @@ import aed.interfaces.Carreras;
  *    trieCarreras: TrieDiccionario<MateriasImpl>; 
  *   
  *   InvRep(C:CarrerasImpl){
- *      trieCarreras != null;     
+ *      C.trieCarreras != null;     
  *      }
  *   }
  */
