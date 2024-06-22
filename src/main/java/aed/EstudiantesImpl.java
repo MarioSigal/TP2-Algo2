@@ -6,7 +6,8 @@ import aed.interfaces.Estudiantes;
  * MODULO CON INVARIANTE DE REPRESENTACION:
  *  Modulo EstudiantesImpl implementa Estudiantes{
  *    trieEstudiantes: TrieDiccionario<Integer>; 
- *   InvRep(E:EstudiantesImpl){
+ *   
+ * InvRep(E:EstudiantesImpl){
  *      E.trieEstudiantes != null     
  *      }
  *   }

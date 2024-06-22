@@ -4,7 +4,8 @@ package aed;
  *  Modulo ArrayConSig{
  *    siguiente: int;
  *    array: String[];
- *   InvRep(a:ArrayConSig){
+ *   
+ * InvRep(a:ArrayConSig){
  *     0 <= a.siguiente <= a.array.length
  *     }
  *   }

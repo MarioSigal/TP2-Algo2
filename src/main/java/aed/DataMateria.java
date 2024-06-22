@@ -2,7 +2,7 @@ package aed;
 
 import aed.SistemaSIU.CargoDocente;
 import aed.interfaces.Iterador;
-import aed.interfaces.DatosMaterias;
+import aed.interfaces.DatosMateria;
 
 /** 
  * MODULO CON INVARIANTE DE REPRESENTACION:
@@ -11,17 +11,25 @@ import aed.interfaces.DatosMaterias;
  *    inscriptos: ListaEnlazada<String>;
  *    otrosNombres: ListaEnlazada<String>;
  *    otrosTries: ListaEnlazada<MateriasImpl>;
- *   InvRep(D:DataMateria){ 
+ *   
+ * InvRep(D:DataMateria){ 
  *     D.otrosNombres.longitud == D.otrosTrie.longitud &&
- *     (ParaTodo i:int) 0<=i<= D.otrosNombres.longitud => D.otrosTries[i].esta(D.otrosNombres[i])
+ * 
+ *     (ParaTodo i:int)( 0<=i< D.otrosNombres.longitud => D.otrosTries[i].esta(D.otrosNombres[i]) )
  *     (Para cada posicion i de otrosNombres debe haber un elemento en la misma
  *      posicion de otrosTries tal que ese nombre este registrado en ese elemento
  *      (de tipo MateriasImpl)) &&
- *     D.plantelDocente.longitud=4;
+ *     
+ *      D.plantelDocente.longitud = 4 && (ParaTodo i:int)(0 <= i < 4 => D.planterDocente[i] >= 0) &&
+ *     
+ *      (Para todas las posiciones i de otrosNombres, al acceder al elemento en la misma posición de
+ *      otrosTries y realizar otrosTries[i].obtenerMateria(otrosNombres[i]) el objeto B devuelto debe
+ *      cumplir que B.plantelDocente = D.plantelDocente && B.inscriptos = D.inscriptos && 
+ *      B.otrosNombres = D.otrosNombres && B.otrosTries = D.otrosNombres 
  *     }
  *   }
  */
-public class DataMateria implements DatosMaterias {
+public class DataMateria implements DatosMateria {
   private int[] plantelDocente;
   private ListaEnlazada<String> inscriptos; 
   private ListaEnlazada<String> otrosNombres; 

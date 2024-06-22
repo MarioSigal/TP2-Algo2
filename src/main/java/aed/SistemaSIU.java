@@ -8,9 +8,16 @@ import aed.interfaces.Sistema;
  *  Modulo SistemaSIU implementa Sistema{
  *    carreras: CarrerasImpl;
  * estudiantes: EstudiantesImpl; 
- *   InvRep(S: SistemaSiu){
- *      S.carreras != null && 
- *      S.estdiantes != null     
+ *   
+ * 
+ *  InvRep(S: SistemaSiu){
+ *      - S.carreras != null 
+ *      - S.estudiantes != null
+ *      - Dada una lu, la cantidad de materias inscriptas segun S.estudiantes de esa lu
+ *      tiene que ser igual a la cantidad de materias distintas de las diferentes carreras 
+ *      de S.carreras en las cuales aparece esa lu como inscripto. 
+ *      - Dadas dos materias iguales pero con distinto nombre, al acceder a su información
+ *      en sus respectivas carreras de S.carreras se debe obtener lo mismo.   
  *      }
  *   }
  */

@@ -11,12 +11,12 @@ import aed.interfaces.Diccionario;
  *    palabra: String;
  *    
  *   InvRep(n:Nodo){
- *      n.hijos.tamaño = 256 && //hijos: ArrayList<Nodo> de tamaño 256.
- *      (ParaTodo i: int)((0 <= i <= 255) => n.hijos[i] != null <=> i es parte de una palabra)&&
- *      n.cantHijos = sm_{i=0}^{255}{if n.hijos[i]!= null then 1 else 0}
+ *      n.hijos.length = 256 && 
+ *      (ParaTodo i: int)((0 <= i <= 255) => n.hijos[i] != null <=> n.hijos[i] es parte de una palabra) &&
+ *      n.cantHijos = sm_{i=0}^{255}{if n.hijos[i]!= null then 1 else 0}  // (n.cantHijos es igual a la cantidad de posiciones no nulas de n.hijos)
  *      n.significado!=null <=> n.palabra != null &&
  *      n.palabra Debe ser la palabra formada por las letras representadas
- *   por los índices de los nodos anteriores en la cadena de nodos.}
+ *      por los índices de los nodos anteriores en la cadena de nodos (en caso de que n.significado != null).}
  *      }
  *   }
  *   
@@ -25,10 +25,13 @@ import aed.interfaces.Diccionario;
  *    longitud: int;
  * 
  *   InvRep(T:TrieDiccionario<T>){
- *      longitud >=0
- *      }
+ *      T.longitud >=0 &&
+ *      (T.longitud es igual a la cantidad de nodos con significado del trie) &&
+ *      (Todos los nodos (excepto la raiz) tienen significado o bien conducen a algun
+ *      nodo con significado (no hay ramas "inutiles"))
  *   }
  */
+
 public class TrieDiccionario<T> implements Diccionario<T>{
   private Nodo raiz;
   private int longitud;
@@ -137,6 +140,7 @@ public class TrieDiccionario<T> implements Diccionario<T>{
 
     if(nodoActual.cantHijos > 0){                             // O(1)
       nodoActual.significado = null;                          // O(1)
+      nodoActual.palabra = null;                              // O(1)
     }
     else{
       ultimoNodoValido.hijos.set(indiceNodoAeliminar,null);    // O(1)        
