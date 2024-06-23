@@ -39,7 +39,7 @@ public class CarrerasImpl implements Carreras{
     public String[] obtenerListaDeCarreras(){
         return trieCarreras.obtenerElems();              // O(suma de las longitudes de las carreras)
     }
-    // Complejidad : O(suma de las longitudes de las carreras) pues trieCarreras es de tipo TrieDiccionario
+    // Complejidad : O(suma de las longitudes de los nombres de las carreras) pues trieCarreras es de tipo TrieDiccionario
 
     public boolean estaRegistrada(String nombreCarrera){
         return this.trieCarreras.esta(nombreCarrera);    // O(|nombreCarrera|) pues trieCarreras es de tipo TrieDiccionario

@@ -61,7 +61,7 @@ public interface DatosMateria{
     public void cerrarMateria();
     
     /**
-     * Devuelve si los estdiantes inscriptos exceden o no el cupo
+     * Devuelve si los estudiantes inscriptos exceden o no el cupo
      * Complejidad:
      *  -DataMateria: O(1)
      */

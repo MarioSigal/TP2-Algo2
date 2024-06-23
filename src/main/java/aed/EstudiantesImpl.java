@@ -8,7 +8,9 @@ import aed.interfaces.Estudiantes;
  *    trieEstudiantes: TrieDiccionario<Integer>; 
  *   
  * InvRep(E:EstudiantesImpl){
- *      E.trieEstudiantes != null     
+ *      E.trieEstudiantes != null &&
+ *      Dada una lu, si esta registrada , la cantidad de materias a la 
+ *      que esta inscripta debe ser >= 0    
  *      }
  *   }
  */

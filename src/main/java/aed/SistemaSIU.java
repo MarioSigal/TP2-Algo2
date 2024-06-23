@@ -37,10 +37,10 @@ public class SistemaSIU implements Sistema {
         this.carreras = new CarrerasImpl();
         this.estudiantes = new EstudiantesImpl();
 
-        for(String lu : libretasUniversitarias){         // O(|libretas universitarias|) = O(cant de estudiantes)
+        for(String lu : libretasUniversitarias){         // O(|libretas universitarias|) = O(cant de estudiantes totales)
             this.estudiantes.registrarEnelSistema(lu);  // O(1) pues estudiantes es de tipo Estudiantes y |lu| es acotada
         }
-        // Complejidad = O(cant de estudiantes) * O(1) = O(cantEstudiantes)
+        // Complejidad = O(cant de estudiantes totales) * O(1) = O(cantEstudiantes)
 
 
         for(InfoMateria info : materiasEnCarreras){
@@ -60,7 +60,7 @@ public class SistemaSIU implements Sistema {
 
                 }
                 else{
-                    MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);   // O(|carrera|) pues carreras es de tipo Carreras           
+                    MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);   // O(|carrera|) pues carreras es de tipo CarrerasImpl           
                     materiasCarrera.agregarMateria(nombreMateria, data);        // O(|nombreMateria|) pues materiasCarrera es de tipo materiasImpl                     
                     data.agregarTrie(materiasCarrera);                          // O(1) pues data es DataMateria
                 }
@@ -68,7 +68,7 @@ public class SistemaSIU implements Sistema {
             }
         }
     }
-/*  La complejidad es : O(cant de estudiantes) + O(suma de las longitudes de las carreras
+/*  La complejidad es : O(cant de estudiantes totales) + O(suma de las longitudes de las carreras
     por su cant de materias) + O(suma de las longitudes de los nombres de la materia para cada materia).
 
     La complejidad del segundo termino se explica por lo que hace el segundo ciclo. Para cada
@@ -83,6 +83,7 @@ public class SistemaSIU implements Sistema {
     Asi, para cada materia , registrarla cuesta O(suma de las longitudes de los nombres de la materia) 
     lo cual explica la complejidad del tercer termino.   
 */
+
 
 
     public void inscribir(String estudiante, String carrera, String materia){
@@ -126,9 +127,13 @@ public class SistemaSIU implements Sistema {
         }
         materiaCarrera.cerrarMateria();                                                // O(suma de las longitudes de los nombres de la materia) pues materiaCarrera es de tipo DataMateria 
     }
+
 /*  Complejidad : O(|carrera|) + O(|materia|) + O(1) + O(cantidad de alumnos inscriptos a la materia) + O(1) + 
 *   + O(suma de las longitudes de los nombres de la materia) = 
     O(|carrera| + |materia| + cantidad de alumnos inscriptos en la materia + suma de las longitudes de los nombres de la materia )
+
+    La explicacion de la complejidad de la ultima linea esta en el método cerrarMateria
+    de DataMateria. 
 */
 
 
@@ -155,17 +160,17 @@ public class SistemaSIU implements Sistema {
     public String[] carreras(){
         return this.carreras.obtenerListaDeCarreras();                                  
     }
-    // Complejidad : O(suma de las longitudes de las carreras) ya que carreras es de tipo carrerasImpl
+    // Complejidad : O(suma de las longitudes de los nombres de las carreras) ya que carreras es de tipo carrerasImpl
 
 
 
 
     public String[] materias(String carrera){
         MateriasImpl materiasCarrera = this.carreras.obtenerMateriasCarrera(carrera);   // O(|carrera|) pues carreras es de tipo CarrerasImpl
-        return materiasCarrera.obtenerListaDeMaterias();                                // O(suma de las longitudes de las materias) pues materiasCarrera es de tipo MateriasImpl
+        return materiasCarrera.obtenerListaDeMaterias();                    // O(suma de las longitudes de los nombres de las materias de la carrera) pues materiasCarrera es de tipo MateriasImpl
     }
-/*  Complejidad = O(|carrera|) + O(suma de las longitudes de las longitudes de las materias) = 
-    O(|carrera| + suma de las longitudes de las materias )
+/*  Complejidad = O(|carrera|) + O(suma de las longitudes de los nombres de las materias de la carrera) = 
+    O(|carrera| + suma de las longitudes de los nombres de las materias de la carrera)
 */
 
 

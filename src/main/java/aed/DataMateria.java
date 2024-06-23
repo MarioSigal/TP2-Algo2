@@ -61,7 +61,7 @@ public class DataMateria implements DatosMateria {
   // Complejidad : O(1)
    
   public void agregarTrie(MateriasImpl trieMateria){
-    this.otrosTries.agregarAtras(trieMateria);        // O(1) pues otrosNombres es una lista enlazada
+    this.otrosTries.agregarAtras(trieMateria);        // O(1) pues otrosTries es una lista enlazada
   }
   // Complejidad : O(1)
 
@@ -111,7 +111,7 @@ public class DataMateria implements DatosMateria {
 /*La complejidad total es O(suma de las longitudes de los nombres de la materia)
   pues el algoritmo lo que hace, en esencia, es que por cada nombre de la materia
   la va borrando en su respectiva carrera lo cual cuesta O(|nombreMateria|) para 
-  cada materia, pues las materias se guardan en un trie. 
+  cada nombre de la materia, pues las materias se guardan en un trie. 
 */
 
 
@@ -124,7 +124,7 @@ public class DataMateria implements DatosMateria {
 
     cupo = min(min(cupoSegunAY2,cupoSegunAY1),min(cupoSegunJTP,cupoSegunPROF)); // O(1)
     
-    return (cantInscriptos() > cupo);                                           // O(1)
+    return (cantInscriptos() > cupo);                                           // O(1) + O(1) = O(1)
 
   }
   // Complejidad : O(1)

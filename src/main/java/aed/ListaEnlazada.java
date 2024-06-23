@@ -2,7 +2,7 @@ package aed;
 import aed.interfaces.Secuencia;
 import aed.interfaces.Iterador;
 
-/* Invariante de representación:
+/* Invariante de representación de Lista enlazada:
  * - longitud es igual a la cantidad de veces que se puede realizar primero.sig 
  *   hasta obtener un null. 
  * - ultimo es null <=> longitud = 0
@@ -10,6 +10,9 @@ import aed.interfaces.Iterador;
  * - luego de hacer primero.sig (longitud - 1) veces se llega a ultimo. 
  * - No hay bucles, es decir, despues de hacer primero.sig una cantidad finita de
  *   veces se obtiene null. 
+ * 
+ * Invariante de representación de ListaIterador:
+ * - indice debe ser >= 0.  
  */
 
 public class ListaEnlazada<T> implements Secuencia<T> {
@@ -23,7 +26,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         Nodo sig; 
 
         public Nodo (T v){
-            valor = v; // O(1)
+            valor = v;        // O(1)
         } 
 
         // Complejidad O(1)

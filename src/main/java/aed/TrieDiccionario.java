@@ -123,7 +123,7 @@ public class TrieDiccionario<T> implements Diccionario<T>{
   public void borrar(String clave){
     Nodo nodoActual = this.raiz;                              // O(1)
     Nodo ultimoNodoValido = this.raiz;                        // O(1)
-    char[] claveArray = clave.toCharArray();                  // O(|clave|)
+    char[] claveArray = clave.toCharArray();                  // O(|clave|) pues para crear un array con los char se debe recorrer cada letra del string clave. 
     int indiceNodoAeliminar = (int) claveArray[0];            // O(1)
 
     for (int i = 0; i < claveArray.length; i++) {             // O(|clave|)
@@ -165,7 +165,7 @@ public class TrieDiccionario<T> implements Diccionario<T>{
     }
     ArrayList<Nodo> hijos = nodo.hijos;                             // O(1)
     if (nodo.cantHijos > 0) {
-      for (int i = 0; i < nodo.hijos.size(); i++) { // recorrer el array nos cuesta O(256) que es O(1).
+      for (int i = 0; i < nodo.hijos.size(); i++) { // recorrer el arrayLits nos cuesta O(256) que es O(1).
         
         if(hijos.get(i) != null){                   // O(1)
           inorder(hijos.get(i), array);       
